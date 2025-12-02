@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+build
+
+# Testing
+coverage
+
+# Environment files
+.env*.local
+
+# IDE
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
