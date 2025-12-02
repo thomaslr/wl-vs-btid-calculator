@@ -27,7 +27,7 @@ services:
       target: production
     container_name: wl-btid-prod
     ports:
-      - "80:80"
+      - "5174:80"
     restart: unless-stopped
     environment:
       - NODE_ENV=production
