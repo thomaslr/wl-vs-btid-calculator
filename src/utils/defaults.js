@@ -28,8 +28,8 @@ export const DEFAULT_BTID = {
 
 export const PAYMENT_DURATION_OPTIONS = [
   { value: 'life', label: 'Life Pay' },
-  { value: '10', label: '10-Pay' },
-  { value: '20', label: '20-Pay' },
+  { value: '10', label: '10 Years' },
+  { value: '20', label: '20 Years' },
   { value: '65', label: 'Pay to Retirement' },
 ];
 

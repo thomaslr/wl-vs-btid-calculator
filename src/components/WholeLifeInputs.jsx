@@ -44,7 +44,7 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
         
         <div className="input-group">
           <label className="input-label" htmlFor="wlPaymentDuration">
-            Payment Duration
+            Payment Duration (years)
           </label>
           <select
             id="wlPaymentDuration"
