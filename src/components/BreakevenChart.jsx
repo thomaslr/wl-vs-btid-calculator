@@ -55,9 +55,9 @@ export default function BreakevenChart({ wholeLifeLedger, btidLedger, breakevens
       year: wl.year,
       wlCashValue,
       wlDeathBenefit,
-      wlTotal: wlCashValue + wlDeathBenefit,
+      wlTotal: wlDeathBenefit,
       wlNetValue: wlCashValue - wlPremiumsPaid,
-      wlNetEstate: (wlCashValue - wlPremiumsPaid) + wlDeathBenefit,
+      wlNetEstate: wlDeathBenefit - wlPremiumsPaid,
       btidInvestment,
       btidEstate,
       btidNetValue: btidInvestment - btidPremiumsPaid,
@@ -387,7 +387,7 @@ export default function BreakevenChart({ wholeLifeLedger, btidLedger, breakevens
               className="rounded border-gray-300 text-wl focus:ring-wl"
             />
             <svg width="32" height="8"><line x1="0" y1="4" x2="32" y2="4" stroke="#15803d" strokeWidth="3" /></svg>
-            <span><strong>Total Estate:</strong> Cash + Death Benefit</span>
+            <span><strong>Total Estate:</strong> Death Benefit</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 rounded px-1 -mx-1">
             <input 
