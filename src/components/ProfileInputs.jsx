@@ -75,26 +75,6 @@ export default function ProfileInputs({ profile, onChange }) {
             step={0.1}
           />
         </div>
-        
-        <div className="input-group md:col-span-2">
-          <label className="input-label" htmlFor="deathBenefit">
-            <Shield className="w-4 h-4 inline mr-1" />
-            Death Benefit Coverage
-            <span className="text-xs text-gray-500 ml-1">(same for both scenarios)</span>
-          </label>
-          <div className="relative">
-            <span className="absolute left-3 top-2 text-gray-500">$</span>
-            <input
-              type="number"
-              id="deathBenefit"
-              className="input-field pl-7"
-              value={profile.deathBenefit}
-              onChange={(e) => handleChange('deathBenefit', parseInt(e.target.value) || 0)}
-              min={50000}
-              step={10000}
-            />
-          </div>
-        </div>
       </div>
     </div>
   );

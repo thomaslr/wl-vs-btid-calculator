@@ -57,13 +57,14 @@ function App() {
     retirementAge: Math.max((profile.currentAge || 30) + 1, profile.retirementAge || 65),
     lifeExpectancy: Math.max((profile.retirementAge || 65) + 1, profile.lifeExpectancy || 90),
     inflationRate: Math.max(0, profile.inflationRate ?? 2.5),
-    deathBenefit: Math.max(1000, profile.deathBenefit || 500000),
   };
 
   const safeWholeLife = {
     annualPremium: Math.max(100, wholeLife.annualPremium || 12000),
     paymentDuration: wholeLife.paymentDuration || '20',
     dividendRate: Math.max(0, wholeLife.dividendRate ?? 4.25),
+    deathBenefit: Math.max(1000, wholeLife.deathBenefit || 500000),
+    deathBenefitMultiplier: Math.max(1, Math.min(5, wholeLife.deathBenefitMultiplier || 1)),
     calibrationPoints: wholeLife.calibrationPoints || { year5: null, year10: null, year20: null },
   };
 
@@ -74,6 +75,7 @@ function App() {
       : Math.max(1, btid.termDuration || 30),
     investmentReturnRate: Math.max(0, btid.investmentReturnRate ?? 7),
     postPremiumStrategy: btid.postPremiumStrategy || 'budgetAllocation',
+    deathBenefit: Math.max(1000, btid.deathBenefit || 500000),
   };
 
   // Calculate results whenever inputs change
@@ -85,10 +87,13 @@ function App() {
         retirementAge: safeProfile.retirementAge,
         lifeExpectancy: safeProfile.lifeExpectancy,
         inflationRate: safeProfile.inflationRate,
-        deathBenefit: safeProfile.deathBenefit,
+        
+        // Whole Life
         wlAnnualPremium: safeWholeLife.annualPremium,
         wlPaymentDuration: safeWholeLife.paymentDuration,
         wlDividendRate: safeWholeLife.dividendRate,
+        wlDeathBenefit: safeWholeLife.deathBenefit,
+        wlDeathBenefitMultiplier: safeWholeLife.deathBenefitMultiplier,
         wlCalibrationPoints: safeWholeLife.calibrationPoints,
         
         // BTID
@@ -96,14 +101,15 @@ function App() {
         termDuration: safeBtid.termDuration,
         investmentReturnRate: safeBtid.investmentReturnRate,
         postPremiumStrategy: safeBtid.postPremiumStrategy,
+        btidDeathBenefit: safeBtid.deathBenefit,
       });
     } catch (error) {
       console.error('Calculation error:', error);
       return { wholeLifeLedger: [], btidLedger: [], breakevens: {}, summary: [] };
     }
-  }, [safeProfile.currentAge, safeProfile.retirementAge, safeProfile.lifeExpectancy, safeProfile.inflationRate, safeProfile.deathBenefit,
-      safeWholeLife.annualPremium, safeWholeLife.paymentDuration, safeWholeLife.dividendRate, safeWholeLife.calibrationPoints,
-      safeBtid.termCost, safeBtid.termDuration, safeBtid.investmentReturnRate, safeBtid.postPremiumStrategy]);
+  }, [safeProfile.currentAge, safeProfile.retirementAge, safeProfile.lifeExpectancy, safeProfile.inflationRate,
+      safeWholeLife.annualPremium, safeWholeLife.paymentDuration, safeWholeLife.dividendRate, safeWholeLife.deathBenefit, safeWholeLife.deathBenefitMultiplier, safeWholeLife.calibrationPoints,
+      safeBtid.termCost, safeBtid.termDuration, safeBtid.investmentReturnRate, safeBtid.postPremiumStrategy, safeBtid.deathBenefit]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">

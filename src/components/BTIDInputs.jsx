@@ -1,4 +1,4 @@
-import { TrendingUp, PiggyBank } from 'lucide-react';
+import { TrendingUp, PiggyBank, Shield } from 'lucide-react';
 import { TERM_DURATION_OPTIONS, POST_PREMIUM_STRATEGY_OPTIONS } from '../utils/defaults';
 
 export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
@@ -15,7 +15,26 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
         Term + Invest Strategy (Scenario B)
       </h3>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="input-group">
+          <label className="input-label" htmlFor="btidDeathBenefit">
+            <Shield className="w-4 h-4 inline mr-1" />
+            Death Benefit Coverage
+          </label>
+          <div className="relative">
+            <span className="absolute left-3 top-2 text-gray-500">$</span>
+            <input
+              type="number"
+              id="btidDeathBenefit"
+              className="input-field pl-7"
+              value={btid.deathBenefit}
+              onChange={(e) => handleChange('deathBenefit', parseInt(e.target.value) || 0)}
+              min={1000}
+              step={1000}
+            />
+          </div>
+        </div>
+
         <div className="input-group">
           <label className="input-label" htmlFor="termCost">
             Term Premium
@@ -28,8 +47,8 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
               className="input-field pl-7"
               value={btid.termCost}
               onChange={(e) => handleChange('termCost', parseInt(e.target.value) || 0)}
-              min={100}
-              step={100}
+              min={1}
+              step={1}
             />
           </div>
         </div>

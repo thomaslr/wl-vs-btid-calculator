@@ -132,17 +132,19 @@ export function calculateScenarios(inputs) {
     retirementAge,
     lifeExpectancy,
     inflationRate,
-    deathBenefit, // Shared between both scenarios
     
     // Whole Life
     wlAnnualPremium,
     wlPaymentDuration,
     wlDividendRate,
+    wlDeathBenefit,
+    wlDeathBenefitMultiplier,
     wlCalibrationPoints,
     
     // BTID
     termCost,
     termDuration,
+    btidDeathBenefit,
     investmentReturnRate, // Net of fees
     postPremiumStrategy, // 'cashFlowMatch' or 'budgetAllocation'
   } = inputs;
@@ -167,7 +169,8 @@ export function calculateScenarios(inputs) {
   let investmentBalance = 0;
   
   const safeInflationRate = Math.max(0, inflationRate ?? 2.5);
-  const safeDeathBenefit = Math.max(1000, deathBenefit || 500000);
+  const safeWlDeathBenefit = Math.max(1000, wlDeathBenefit || 500000);
+  const safeBtidDeathBenefit = Math.max(1000, btidDeathBenefit || 500000);
   const safeDividendRate = Math.max(0, wlDividendRate ?? 4.25);
   const safeTermCost = Math.max(0, termCost || 0);
   // Handle term duration - can be a number or 'retirement', 'retirement+10', 'retirement+20'
@@ -192,8 +195,13 @@ export function calculateScenarios(inputs) {
     wlTotalPremiumsPaid += wlPremiumThisYear;
     
     const wlCashValue = cashValues[year] || 0;
+    // Apply multiplier to death benefit until retirement age
+    const currentDeathBenefit = age < retirementAge 
+      ? safeWlDeathBenefit * (wlDeathBenefitMultiplier || 1)
+      : safeWlDeathBenefit;
+    
     const wlDeathBenefitTotal = calculateDeathBenefit(
-      safeDeathBenefit, 
+      currentDeathBenefit, 
       wlCashValue, 
       safeDividendRate, 
       year
@@ -204,7 +212,7 @@ export function calculateScenarios(inputs) {
     const termPremiumThisYear = termActive ? safeTermCost : 0;
     termTotalPremiumsPaid += termPremiumThisYear;
     
-    const termDeathBenefit = termActive ? safeDeathBenefit : 0;
+    const termDeathBenefit = termActive ? safeBtidDeathBenefit : 0;
     
     // Investment contribution logic
     let investmentContribution = 0;

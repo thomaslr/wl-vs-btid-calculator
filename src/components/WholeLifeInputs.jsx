@@ -23,7 +23,50 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
         Whole Life Policy (Scenario A)
       </h3>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="input-group">
+          <label className="input-label" htmlFor="wlDeathBenefit">
+            <Shield className="w-4 h-4 inline mr-1" />
+            Death Benefit Coverage (Base)
+          </label>
+          <div className="relative">
+            <span className="absolute left-3 top-2 text-gray-500">$</span>
+            <input
+              type="number"
+              id="wlDeathBenefit"
+              className="input-field pl-7"
+              value={wholeLife.deathBenefit}
+              onChange={(e) => handleChange('deathBenefit', parseInt(e.target.value) || 0)}
+              min={1000}
+              step={1000}
+            />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label className="input-label" htmlFor="wlMultiplier">
+            Death Benefit Multiplier
+            <span 
+              className="inline-block ml-1 cursor-help" 
+              title="Multiplies the base death benefit until retirement age. After retirement, death benefit reverts to base amount. Common for policies covering working years with higher family protection needs."
+            >
+              <Info className="w-3.5 h-3.5 inline text-gray-400 hover:text-gray-600" />
+            </span>
+          </label>
+          <select
+            id="wlMultiplier"
+            className="input-field"
+            value={wholeLife.deathBenefitMultiplier || 1}
+            onChange={(e) => handleChange('deathBenefitMultiplier', parseInt(e.target.value))}
+          >
+            <option value={1}>1x (Base Amount)</option>
+            <option value={2}>2x</option>
+            <option value={3}>3x</option>
+            <option value={4}>4x</option>
+            <option value={5}>5x</option>
+          </select>
+        </div>
+
         <div className="input-group">
           <label className="input-label" htmlFor="wlAnnualPremium">
             Annual Premium
@@ -36,8 +79,8 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
               className="input-field pl-7"
               value={wholeLife.annualPremium}
               onChange={(e) => handleChange('annualPremium', parseInt(e.target.value) || 0)}
-              min={1000}
-              step={500}
+              min={100}
+              step={100}
             />
           </div>
         </div>
