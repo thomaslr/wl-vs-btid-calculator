@@ -13,7 +13,7 @@ export default function ProfileInputs({ profile, onChange }) {
       </h3>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="currentAge">
             Current Age
           </label>
@@ -28,7 +28,7 @@ export default function ProfileInputs({ profile, onChange }) {
           />
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="retirementAge">
             Retirement/Target Age
           </label>
@@ -43,7 +43,7 @@ export default function ProfileInputs({ profile, onChange }) {
           />
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="lifeExpectancy">
             Life Expectancy
             <span className="text-xs text-gray-500 ml-1">(for Estate Value)</span>
@@ -59,7 +59,7 @@ export default function ProfileInputs({ profile, onChange }) {
           />
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="inflationRate">
             Inflation Rate Assumption
             <span className="text-xs text-gray-500 ml-1">(%)</span>

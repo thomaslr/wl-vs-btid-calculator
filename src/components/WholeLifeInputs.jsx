@@ -24,7 +24,7 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
       </h3>
       
       <div className="grid grid-cols-2 gap-4">
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="wlDeathBenefit">
             <Shield className="w-4 h-4 inline mr-1" />
             Death Benefit Coverage (Base)
@@ -43,7 +43,7 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
           </div>
         </div>
 
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="wlMultiplier">
             Death Benefit Multiplier
             <span 
@@ -67,7 +67,7 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
           </select>
         </div>
 
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="wlAnnualPremium">
             Annual Premium
           </label>
@@ -85,7 +85,7 @@ export default function WholeLifeInputs({ wholeLife, onChange }) {
           </div>
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="wlPaymentDuration">
             Payment Duration (years)
           </label>

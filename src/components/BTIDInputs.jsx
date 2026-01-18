@@ -16,7 +16,7 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
       </h3>
       
       <div className="grid grid-cols-2 gap-4">
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="btidDeathBenefit">
             <Shield className="w-4 h-4 inline mr-1" />
             Death Benefit Coverage
@@ -35,7 +35,7 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
           </div>
         </div>
 
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="termCost">
             Term Premium
           </label>
@@ -53,7 +53,7 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
           </div>
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="termDuration">
             Term Duration
           </label>
@@ -74,7 +74,7 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
           </select>
         </div>
         
-        <div className="input-group">
+        <div className="input-group min-h-[88px]">
           <label className="input-label" htmlFor="investmentReturn">
             Expected Investment Return
             <span className="text-xs text-gray-500 ml-1">(%/year, net of fees)</span>
@@ -91,7 +91,7 @@ export default function BTIDInputs({ btid, onChange, wlAnnualPremium = 0 }) {
           />
         </div>
         
-        <div className="input-group flex flex-col justify-end">
+        <div className="input-group min-h-[88px] flex flex-col justify-end">
           <div className="text-sm text-gray-600 mb-1">Annual Investment Amount</div>
           <div className="text-xl font-bold text-btid">
             ${premiumDifference.toLocaleString()}/year

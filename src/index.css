@@ -29,7 +29,7 @@ body {
   }
   
   .input-group {
-    @apply mb-4;
+    @apply mb-4 flex flex-col justify-end;
   }
   
   .card {

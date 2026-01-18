@@ -3,15 +3,15 @@
 export const DEFAULT_PROFILE = {
   currentAge: 30,
   retirementAge: 65,
-  lifeExpectancy: 90,
+  lifeExpectancy: 80,
   inflationRate: 2.5,
 };
 
 export const DEFAULT_WHOLE_LIFE = {
   annualPremium: 3500,
-  paymentDuration: '10', // 'life', '10', '20', '65'
+  paymentDuration: '65', // 'life', '10', '20', '65'
   dividendRate: 4,
-  deathBenefit: 10000,
+  deathBenefit: 100000,
   deathBenefitMultiplier: 1,
   calibrationPoints: {
     year5: null,
@@ -22,10 +22,10 @@ export const DEFAULT_WHOLE_LIFE = {
 
 export const DEFAULT_BTID = {
   termCost: 567,
-  termDuration: 30,
+  termDuration: 'retirement',
   investmentReturnRate: 7, // Net of fees
   postPremiumStrategy: 'budgetAllocation', // 'cashFlowMatch' or 'budgetAllocation'
-  deathBenefit: 1000000,
+  deathBenefit: 100000,
 };
 
 export const PAYMENT_DURATION_OPTIONS = [
